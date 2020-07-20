@@ -61,7 +61,7 @@ async function buildOperationArguments(
   pathParams: PathParameterValues,
   body: RequestBody,
   globalSchemas: SchemasObject,
-  options: RequestBodyValidationOptions = defaultValidationOptions,
+  options: RequestBodyValidationOptions,
 ): Promise<OperationArgs> {
   let requestBodyIndex = -1;
   if (operationSpec.requestBody) {
