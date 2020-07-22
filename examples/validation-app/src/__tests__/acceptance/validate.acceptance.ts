@@ -109,6 +109,11 @@ describe('validate properties', () => {
     );
   });
 
+  // The example app uses a custom sequence handler, which catches all the errors
+  // encountered on '/coffee-shops'. If the request method is 'PATCH', it modifies
+  // the error body (a demonstration of how to customize error messages during
+  // runtime). The test below is specifically for this behavior.
+
   it('should use sequence-level custom error handler', async () => {
     const invalidCapacityTypeCS = {
       city: 'Toronto',

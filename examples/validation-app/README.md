@@ -37,7 +37,8 @@ instance with the in-memory storage.
    where the `ValidatePhoneNumInterceptor` is applied.
 
 4. [MySequence](src/sequence.ts): a custom sequence for creating custom error
-   messages.
+   messages. This is not a requirement, just a demonstration of how to customize
+   error messages during runtime.
 
 ## Use
 
