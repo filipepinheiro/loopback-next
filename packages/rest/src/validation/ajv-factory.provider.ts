@@ -30,7 +30,7 @@ const ajvErrors = require('ajv-errors');
  */
 @bind({scope: BindingScope.SINGLETON})
 export class AjvFactoryProvider implements Provider<AjvFactory> {
-  static defaultValidationOptions: RequestBodyValidationOptions = {
+  static readonly defaultValidationOptions: RequestBodyValidationOptions = {
     $data: true,
     ajvKeywords: true,
     ajvErrors: true,
