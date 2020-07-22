@@ -21,7 +21,6 @@ import {
   ValueValidationOptions,
 } from '../types';
 import {AjvFactoryProvider} from './ajv-factory.provider';
-import {defaultValidationOptions} from './default-options';
 
 const toJsonSchema = require('@openapi-contrib/openapi-schema-to-json-schema');
 const debug = debugModule('loopback:rest:validation');
@@ -40,7 +39,7 @@ export async function validateRequestBody(
   body: RequestBody,
   requestBodySpec?: RequestBodyObject,
   globalSchemas: SchemasObject = {},
-  options: RequestBodyValidationOptions = defaultValidationOptions,
+  options: RequestBodyValidationOptions = AjvFactoryProvider.defaultValidationOptions,
 ) {
   const required = requestBodySpec?.required;
 
@@ -104,7 +103,7 @@ const DEFAULT_COMPILED_SCHEMA_CACHE: SchemaValidatorCache = new WeakMap();
  * @param options - Request body validation options
  */
 function getKeyForOptions(
-  options: RequestBodyValidationOptions = defaultValidationOptions,
+  options: RequestBodyValidationOptions = AjvFactoryProvider.defaultValidationOptions,
 ) {
   const ajvOptions: Record<string, unknown> = {};
   // Sort keys for options

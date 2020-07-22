@@ -21,7 +21,7 @@ import {
   Request,
   RequestBodyValidationOptions,
 } from './types';
-import {defaultValidationOptions} from './validation/default-options';
+import {AjvFactoryProvider} from './validation/ajv-factory.provider';
 import {validateRequestBody} from './validation/request-body.validator';
 const debug = debugFactory('loopback:rest:parser');
 
@@ -36,7 +36,7 @@ export async function parseOperationArgs(
   request: Request,
   route: ResolvedRoute,
   requestBodyParser: RequestBodyParser = new RequestBodyParser(),
-  options: RequestBodyValidationOptions = defaultValidationOptions,
+  options: RequestBodyValidationOptions = AjvFactoryProvider.defaultValidationOptions,
 ): Promise<OperationArgs> {
   debug('Parsing operation arguments for route %s', route.describe());
   const operationSpec = route.spec;

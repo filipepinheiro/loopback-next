@@ -17,7 +17,7 @@ import {
   ValueValidationOptions,
 } from '../';
 import {parseJson} from '../parse-json';
-import {defaultValidationOptions} from '../validation/default-options';
+import {AjvFactoryProvider} from '../validation/ajv-factory.provider';
 import {
   DateCoercionOptions,
   getOAIPrimitiveType,
@@ -168,7 +168,7 @@ function coerceBoolean(data: string | object, spec: ParameterObject) {
 async function coerceObject(
   input: string | object,
   spec: ParameterObject,
-  options: RequestBodyValidationOptions = defaultValidationOptions,
+  options: RequestBodyValidationOptions = AjvFactoryProvider.defaultValidationOptions,
 ) {
   const data = parseJsonIfNeeded(input, spec);
 

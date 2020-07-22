@@ -19,7 +19,7 @@ import {
   AjvKeyword,
   RequestBodyValidationOptions,
 } from '../types';
-import {defaultValidationOptions} from './default-options';
+
 const debug = debugModule('loopback:rest:ajv');
 
 const ajvKeywords = require('ajv-keywords');
@@ -30,12 +30,17 @@ const ajvErrors = require('ajv-errors');
  */
 @bind({scope: BindingScope.SINGLETON})
 export class AjvFactoryProvider implements Provider<AjvFactory> {
+  static defaultValidationOptions: RequestBodyValidationOptions = {
+    $data: true,
+    ajvKeywords: true,
+    ajvErrors: true,
+  };
   constructor(
     @inject(
       RestBindings.REQUEST_BODY_PARSER_OPTIONS.deepProperty('validation'),
       {optional: true},
     )
-    private options: RequestBodyValidationOptions = defaultValidationOptions,
+    private options: RequestBodyValidationOptions = AjvFactoryProvider.defaultValidationOptions,
   ) {}
 
   @inject(filterByTag(RestTags.AJV_KEYWORD))
